@@ -118,7 +118,7 @@ public class ListaDoble {
             return;
         }
 
-        for(int contador = 0; contador < length-1; contador++){
+        for(int contador = 1; contador < length-1; contador++){
             puntero = puntero.siguiente;
             if(contador == posicion) {
 
@@ -165,6 +165,20 @@ public class ListaDoble {
         }
 
         return datoRetornado;
+    }
+
+    public void imprimir() {
+        Nodo puntero = inicio;
+        if(inicio == null) {
+            System.out.println("No hay elementos en la lista");
+            return;
+        }
+
+        while(puntero != null) {
+            System.out.print(puntero.dato + " -> ");
+            puntero = puntero.siguiente;
+        }
+        System.out.println();
     }
 
 }
