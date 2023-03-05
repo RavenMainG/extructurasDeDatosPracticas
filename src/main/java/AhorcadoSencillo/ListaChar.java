@@ -6,6 +6,7 @@ public class ListaChar {
     int length = 0;
 
     public class Nodo {
+
         char letra;
         Nodo siguiente = null;
 
@@ -17,6 +18,7 @@ public class ListaChar {
 
     public String toString() {
         Nodo puntero = inicio;
+
         String palabra = "";
 
         while(puntero != null) {
@@ -30,6 +32,7 @@ public class ListaChar {
     }
 
     public void cambiarValorPocision(int posicion, char letra) {
+
         Nodo puntero = inicio;
 
         for(int contador = 0; contador < length; contador++){
@@ -43,7 +46,9 @@ public class ListaChar {
 
     public int[] buscarPosicionLetras(char letra) {
         Nodo puntero = inicio;
+
         int contadorApariciones = 0;
+
         int[] arregloPosiciones = null;
 
         // buscar cuantas veces aparece la letra
@@ -59,13 +64,15 @@ public class ListaChar {
         }
 
         arregloPosiciones = new int[contadorApariciones];
+
+
         contadorApariciones = 0;
         puntero = inicio;
-
 
         for(int contador = 0; contador < length; contador++) {
             if(letra == puntero.letra) {
                 arregloPosiciones[contadorApariciones] = contador;
+                contadorApariciones++;
             }
             puntero = puntero.siguiente;
         }
@@ -74,15 +81,21 @@ public class ListaChar {
 
     }
 
+    //  Metodo de insertar
     public void push(char letra) {
+
         Nodo nuevoNodo = new Nodo(letra);
         Nodo puntero = inicio;
 
         if(inicio == null) {
             inicio = nuevoNodo;
+            // Nuevo nodo -> dato, siguiente = null
+            // length = length + 1;
             length++;
             return;
         }
+
+        
 
         while(puntero.siguiente != null) {
             puntero = puntero.siguiente;
@@ -93,6 +106,7 @@ public class ListaChar {
 
     }
 
+    // Metodo de extraer
     public void pop() {
 
         Nodo puntero = inicio;
@@ -117,6 +131,12 @@ public class ListaChar {
 
     public void imprimir() {
         Nodo puntero = inicio;
+
+        if(inicio == null) {
+            System.out.println("Debes de ingresar elementos dentro de la lista");
+            return;
+        }
+
         while(puntero != null){
 
             System.out.print(puntero.letra + " ");
